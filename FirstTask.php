@@ -1,23 +1,29 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pavel
- * Date: 11.10.17
- * Time: 22.29
- */
-$MyPath=__DIR__;
-echo "\r\n".$MyPath."\r\n";
+declare(strict_types=1);
 
-function opener($MyPath,$CountOfPlus)
-{
-    $AllFileInMyFolder=scandir($MyPath);
-    for ($i = 2; $i < count($AllFileInMyFolder); $i++) {
-        echo  $CountOfPlus."$MyPath" . '/' . "$AllFileInMyFolder[$i]" . "\r\n";
-        if (is_dir("$MyPath" . '/' . "$AllFileInMyFolder[$i]") == true) {
-            opener($MyPath .'/' . $AllFileInMyFolder[$i],$CountOfPlus.'------');
+$myPath=__DIR__;
+
+function checkBrowser ():string {
+    if (isset($_SERVER['HTTP_USER_AGENT'])){
+        return $hypehenation="</br>";
+    }else {
+        return $hypehenation="\r\n";
+    }
+}
+
+$hypehenation=CheckBrowser();
+echo $hypehenation.$myPath.$hypehenation;
+
+function inputFile(string $myPath,string $countOfPlus,string $hypehenation){
+
+    $allFileInMyFolder=scandir($myPath);
+    for ($i = 2; $i < count($allFileInMyFolder); $i++) {
+        echo  $countOfPlus."$myPath" . '/' . "$allFileInMyFolder[$i]" . $hypehenation;
+        if (is_dir("$myPath" . '/' . "$allFileInMyFolder[$i]") === true) {
+            inputFile($myPath .'/' . $allFileInMyFolder[$i],$countOfPlus.'------',$hypehenation);
         }
     }
 }
-opener($MyPath,'------');
+inputFile($myPath,'------',$hypehenation);
 
 
