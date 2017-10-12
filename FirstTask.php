@@ -11,7 +11,7 @@ function checkBrowser ():string {
     }
 }
 
-$hypehenation=CheckBrowser();
+$hypehenation=checkBrowser();
 echo $hypehenation.$myPath.$hypehenation;
 
 function inputFile(string $myPath,string $countOfPlus,string $hypehenation){
