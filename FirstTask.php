@@ -14,7 +14,7 @@ function checkBrowser ():string {
 $hypehenation=checkBrowser();
 echo $hypehenation.$myPath.$hypehenation;
 
-function inputFile(string $myPath,string $countOfPlus,string $hypehenation){
+function inputFile(string $myPath,string $countOfPlus,string $hypehenation):void{
 
     $allFileInMyFolder=scandir($myPath);
     for ($i = 2; $i < count($allFileInMyFolder); $i++) {
